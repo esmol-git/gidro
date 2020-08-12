@@ -26,19 +26,31 @@ $(function () {
 		nextArrow: '<button class="product-slider__slider-btn product-slider__slider-btnnext"><img src="images/icons/arrow-black-right.svg"></button>',
 	})
 
-	$('.filter__item-drop').on('click', function () {
+	$('.filter__item-drop, .filter__extra').on('click', function () {
 		$(this).toggleClass('filter__item-drop--active')
 		$(this).next().slideToggle('200')
 	})
 
 	$('.filter-stile').styler();
 
+	$('.catalog__filter-btngrid').on('click', function () {
+		$(this).addClass('catalog__filter-button--active');
+		$('.catalog__filter-btnline').removeClass('catalog__filter-button--active');
+		$('.product-item__wrapper').removeClass('product-item__wrapper--list');
+	})
+
+	$('.catalog__filter-btnline').on('click', function () {
+		$(this).addClass('catalog__filter-button--active');
+		$('.catalog__filter-btngrid').removeClass('catalog__filter-button--active');
+		$('.product-item__wrapper').addClass('product-item__wrapper--list');
+	})
+
 	var $range = $(".js-range-slider"),
 		$inputFrom = $(".js-input-from"),
 		$inputTo = $(".js-input-to"),
 		instance,
 		min = 0,
-		max = 1000,
+		max = 2000000,
 		from = 0,
 		to = 0;
 
@@ -47,8 +59,8 @@ $(function () {
 		type: "double",
 		min: min,
 		max: max,
-		from: 200,
-		to: 800,
+		from: 500000,
+		to: 1000000,
 		onStart: updateInputs,
 		onChange: updateInputs
 	});
